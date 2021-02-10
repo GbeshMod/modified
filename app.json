@@ -1,0 +1,166 @@
+{
+  "name": "Modified BOT",
+  "description": "The best userbot made by @GbeshMod. Which have more commands and less plugin ...🎉🎊✨🏆Modified  Bot Made with Love, Phone, Hardwork....",
+  "logo": "https://i.ibb.co/FqyH32K/mod.gif",
+  "keywords": [
+    "telegram",
+    "userbot",
+    "plugins",
+    "modules",
+    "modifiedbot",
+    "modified_bot",
+    "telegramuserbot",
+    "telegram_userbot",
+    "productivity"
+  ],
+  "repository": "https://github.com/GbeshMod/modified",
+  "website": "https://github.com/GbeshMod",
+  "success_url": "t.me/GbeshMod",
+  "stack": "container",
+  "env": {
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable heroku.",
+      "value": "ANYTHING"
+    },
+    "PMPERMIT_PIC": {
+      "description": "put here any telegraph media link for pmpermit custom pic. ",
+      "value": ""
+    },
+    "ALIVE_NAME": {
+      "description": "Fill your Full name or Username like @Gβε₷hMod",
+      "value": ""
+    },
+    "ALIVE_IMAGE": {
+      "description": "put here any telegraph media link use .alive to show.",
+      "value": "",
+      "required": false
+    },
+    "APP_ID": {
+      "description": "Get this value from my.telegram.org! Putting Others Value may result In Account Ban.",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org! Putting Others Value may result In Account Ban.",
+      "value": ""
+    },
+    "BOT_NICK_NAME": {
+      "description": "Coustom Userbot name... Or remove ©Modified ☚  Tag™ ",
+      "value": "Modified"
+    },
+    "PLUGIN_CHANNEL": {
+      "description": "Channel Where You Save Your Plugins",
+      "value": ""
+    },
+    "SUDO_USERS": {
+      "description": "Enter A User Id Which You Would Like to Use To Control Sudo. Don't Give Your Own ID Or ID Of Users You Don't Trust.",
+      "value": "",
+      "required": false
+    },
+    "PRIVATE_GROUP_ID": {
+      "description": "A Group ID Where You Want Logging Feature",
+      "value": ""
+    },
+    "STRING_SESSION": {
+      "description": "Get this value by running ➥  https://repl.it/@gbeshmod/modified#main.py",
+      "value": ""
+    },
+    "GIT_REPO_NAME": {
+      "description": "Your repo name Example: GbeshMod/modified .",
+      "value": "",
+      "required": false
+    },
+    "GITHUB_ACCESS_TOKEN": {
+      "description": "Your Github Access Token for GitHub Commit Plugin. Google 'Github access token' to find more About It.",
+      "value": "",
+      "required": false
+    },
+    "NO_OF_BUTTONS_DISPLAY_IN_CMD": {
+      "description": " Set The Amount Of Buttons Displayed In Help Command",
+      "value": "",
+      "required": false
+    },
+    "NO_OF_COLUMS_DISPLAY_IN_CMD": {
+      "description": "Set The Amount Of Rows You Want To Displayed In Help Command",
+      "value": "2",
+      "required": true
+    },
+    "EMOJI_TO_DISPLAY_IN_HELP": {
+      "description": "Set The emojies 🎖You Want to Add In Help Command!!",
+      "value": "",
+      "required": false
+    },
+    "REM_BG_API_KEY": {
+      "description": "Required for Removing image background functionality. Get from https://www.remove.bg/",
+      "value": "",
+      "required": false
+    },
+    "WALL_API": {
+      "description": "Get one from https://wall.alphacoders.com/api.php",
+      "value": "",
+      "required": false
+    },
+    "OCR_SPACE_API_KEY": {
+      "description": "Register an account on ocr.space to get this value(API key)....",
+      "value": "",
+      "required": false
+    },
+    "OPEN_WEATHER_MAP_APPID": {
+      "description": "Get your own APPID from https://api.openweathermap.org/data/2.5/weather",
+      "required": false
+    },
+    "LYDIA_API_KEY": {
+      "description": "Needed for Lydia AI. Follow https://telegra.ph/Lydia-09-05 to get your API.  Coffeehouse chatbot api key, get one from https://coffeehouse.intellivoid.info/",
+      "value": "",
+      "required": false
+    },
+    "HEROKU_API_KEY": {
+      "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.Required for updater to work.",
+      "value": ""
+    },
+    "HEROKU_APP_NAME": {
+      "description": "The Value of App Name you filled in right on top. Required for updater to work.",
+      "value": "https://<HEROKU_APP_NAME>.herokuapp.com/"
+    },
+    "TRASH_DOWNLOAD_DIRECTORY": {
+      "description": "Where downloaded useless  files will go.",
+      "value": "./trash/",
+      "required": false
+    },
+    "TEMP_DOWNLOAD_DIRECTORY": {
+      "description": "Where downloaded files will go.",
+      "value": "./download/",
+      "required": false
+    },
+    "TG_BOT_TOKEN": {
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the token of your bot. And Don't Forget To Turn on inline Mode on bot settings. Get it.",
+      "value": ""
+    },
+    "TG_BOT_USER_NAME": {
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the username of your bot",
+      "value": ""
+    },
+    "DOWNLOAD_PFP_URL_CLOCK": {
+      "description": "Needed for autopic module. A url that is a preview link of your Profile Pic",
+      "value": "",
+      "required": false
+    },
+    "TIME_API_KEY": {
+      "description": "Get one from  https://timezonedb.com/register",
+      "value": "",
+      "required": false
+    },
+    "TZ": {
+      "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
+      "value": "Africa/Lagos",
+      "required": false
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ]
+}
