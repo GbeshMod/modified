@@ -24,7 +24,7 @@ class Development(Config):
     CASH_API_KEY = None # Get one from https://www.alphavantage.co/support/#api-key
     
     # Get one from https://timezonedb.com/register
-    TIME_API_KEY = "G9ZYSW6CBXNM"
+    TIME_API_KEY = ""
 
     # OpenWeather Map API Key for .weather command
     # Get from https://openweathermap.org/
