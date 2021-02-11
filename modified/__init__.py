@@ -20,10 +20,11 @@ from telegraph import Telegraph, exceptions, upload_file
 
 StartTime = time.time()
 Lastupdate = time.time()
+BOT_REPO = Config.UPSTREAM_REPO
 BOT_N_N = Config.BOT_NICK_NAME
 sedprint = logging.getLogger("WARNING")
-mod_version = "3.2.7" 
-BOT_LIN = [BOT_N_N] + "(https://github.com/GbeshMod/modified)"
+mod_version = "0.03.9" 
+BOT_LIN = "[{}]({})".format(BOT_N_N, BOT_REPO)
 
 
 # Clients & bot
