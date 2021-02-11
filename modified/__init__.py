@@ -129,7 +129,7 @@ if bool(ENV):
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
     # Default .alive name
-    BOT_N_N = os.environ.get("BOT_NICK_NAME", "Modified")
+    BOT_NICK_NAME = os.environ.get("BOT_NICK_NAME", "Modified")
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 
     LESS_SPAMMY = os.environ.get("LESS_SPAMMY", True)
@@ -175,6 +175,8 @@ if bool(ENV):
     TRASH_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./trash")
 else:
 
+    PLACEHOLDER = None
+
 # Global Configiables
 COUNT_MSG = 0
 USERS = {}
@@ -186,8 +188,7 @@ CUSTOM_PMPERMIT_MSG = {}
 CUSTOM_BOTSTART = {}
 ISAFK = False
 AFKREASON = None
-
-
+# End of PaperPlaneExtended Support Configs
 
 
 # Nospam+ Client
@@ -197,13 +198,11 @@ if Config.NOSPAMPLUS_TOKEN == None:
 else:
     try:
         sclient = Connect(Config.NOSPAMPLUS_TOKEN)
-    except Exception as ex:
+    except Exception as e:
         sclient = None
-        sedprint.info("[Warning] - " + str(ex))
+        sedprint.info("[Warning] - " + str(e))
 
 
-
-# Avoid Doing This Again And Again In Plugins.        
 try:
     if not os.path.isdir(TRASH_DOWNLOAD_DIRECTORY):
         os.makedirs(TRASH_DOWNLOAD_DIRECTORY)
