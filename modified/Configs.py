@@ -189,7 +189,7 @@ elif ENV:
         NO_OF_COLUMS_DISPLAY_IN_CMD = int(os.environ.get("NO_OF_COLUMS_DISPLAY_IN_CMD", 2))
 
         EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", "⚝")
-          BOT_NICK_NAME = os.environ.get("BOT_NICK_NAME")
+        BOT_NICK_NAME = os.environ.get("BOT_NICK_NAME")
 
 else:
     if os.path.exists("config.py"):
