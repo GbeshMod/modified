@@ -62,7 +62,7 @@ python3 -m modified
 class Development(object):
   APP_ID = 123456
   API_HASH = "gbeshmod6e6modified6tda1d1b8e29"
-  STRING_SESSION = PHxpIvq6APHxpIvq6AXfPVbPHxpIvq6AXfPVbXPHxpIvq6AXPHxpIvq6AXfPVbfPVbPHxpIvq6AXfPVbPHPHxpIvq6AXfPVbxpIvq6AXfPHxpIvq6AXfPVbPHxpIvq6AXfPVbPPHxpIvq6AXfPVbVPHxpIvq6AXfPVbbPHxpIvq6AXfPVbfPVbA-PHxpIvPHxpIvq6AXfPVbqPHPHPHxpIvq6AXfPVbxpIvq6AXfPVbxpIvq6AXfPVb6AXfPVb-PHxpIvq6AXfPVb="
+  STRING_SESSION = "PHxpIvq6APHxpIvq6AXfPVbPHxpIvq6AXfPVbXPHxpIvq6AXPHxpIvq6AXfPVbfPVbPHxpIvq6AXfPVbPHPHxpIvq6AXfPVbxpIvq6AXfPHxpIvq6AXfPVbPHxpIvq6AXfPVbPPHxpIvq6AXfPVbVPHxpIvq6AXfPVbbPHxpIvq6AXfPVbfPVbA-PHxpIvPHxpIvq6AXfPVbqPHPHPHxpIvq6AXfPVbxpIvq6AXfPVbxpIvq6AXfPVb6AXfPVb-PHxpIvq6AXfPVb="
   TG_BOT_TOKEN_BF_HER = "1234567890:aBeDeF********************************"
   PRIVATE_GROUP_ID = -095877410856
   DATABASE_URL = "postgres://gbeshmod:142.compute1.amazonaws.com:5432/d84uy6cc"
