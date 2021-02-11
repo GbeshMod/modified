@@ -13,7 +13,11 @@ elif ENV:
         API_HASH = os.environ.get("API_HASH", None)
         STRING_SESSION = os.environ.get("STRING_SESSION", None)
         DB_URI = os.environ.get("DATABASE_URL", None)
+        TRASH_DOWNLOAD_DIRECTORY = os.environ.get(
+            "TRASH_DOWNLOAD_DIRECTORY", "./trash/"
+        )
         TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", './download/')
+        TEMP_DIR = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", None)
         LOGGER = True
         GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
         GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
@@ -46,7 +50,6 @@ elif ENV:
         SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
         ANTISPAM_SYSTEM = os.environ.get("ANTISPAM_SYSTEM", "DISABLE")
         WHITE_CHAT = set(int(x) for x in os.environ.get("WHITE_CHAT", "").split())
-        LOCATION = os.environ.get("LOCATION", None)
         ALIVE_TEXT = os.environ.get("ALIVE_TEXT", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
         STRING_SESSIONS = os.environ.get("STRING_SESSIONS", None)
@@ -62,21 +65,15 @@ elif ENV:
         )
         SUB_TO_MSG_ASSISTANT = os.environ.get("SUB_TO_MSG_ASSISTANT", False)
         AUTO_SPELL_FIX = os.environ.get("AUTO_SPELL_FIX", False)
-        TRASH_DOWNLOAD_DIRECTORY = os.environ.get(
-            "TRASH_DOWNLOAD_DIRECTORY", "./trash/"
-        )
         IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
         IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
-        HASH_TO_TORRENT_API = os.environ.get(
-            "HASH_TO_TORRENT_API", "https://example.com/torrent/{}"
-        )
         COUNTRY = str(os.environ.get("COUNTRY", ""))
         LOCATION = os.environ.get("LOCATION", None)
         DOWNLOAD_PFP_URL_CLOCK = os.environ.get("DOWNLOAD_PFP_URL_CLOCK", None)
         WATCH_COUNTRY = os.environ.get("WATCH_COUNTRY", None)
         WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", None)
         WEATHER_DEFLANG = os.environ.get("WEATHER_DEFLANG", "EN")
-        TIMEZONE = os.environ.get("TZ", None)
+        TZ = os.environ.get("TZ", None)
         TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
         TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
 
@@ -117,9 +114,6 @@ elif ENV:
         if PM_LOGGR_BOT_API_ID:
             PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
         DB_URI = os.environ.get("DATABASE_URL", None)
-        NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(
-            os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 5)
-        )
         COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\.")
         SUDO_COMMAND_HAND_LER = os.environ.get("SUDO_COMMAND_HAND_LER", "\.")
         BOT_HANDLER = os.environ.get("BOT_HANDLER", "^/")
@@ -138,7 +132,6 @@ elif ENV:
         GROUP_REG_SED_EX_BOT_S = os.environ.get(
             "GROUP_REG_SED_EX_BOT_S", r"(regex|moku|BananaButler_|rgx|l4mR)bot"
         )
-        TEMP_DIR = os.environ.get("TEMP_DIR", None)
         CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))
         CHROME_DRIVER = os.environ.get("CHROME_DRIVER", "/usr/bin/chromedriver")
         TESSDATA_PREFIX = os.environ.get(
@@ -175,27 +168,69 @@ elif ENV:
         ENABLE_ASSISTANTBOT = os.environ.get("ENABLE_ASSISTANTBOT", "ENABLE")
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "DISABLE")
         ANTISPAM_FEATURE = os.environ.get("ANTISPAM_FEATURE", "ENABLE")
-        ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
+        ASSISTANT_LOG = bool(os.environ.get("ASSISTANT_LOG", False))
         UPSTREAM_REPO = os.environ.get(
             "UPSTREAM_REPO", "https://github.com/GbeshMod/modified"
-        )
+          )
         ALIVE_IMAGE = os.environ.get(
             "ALIVE_IMAGE", "https://telegra.ph/file/24f412762232e8656177a.jpg"
-        )
+          )
         ASSISTANT_IMG = os.environ.get(
             "ASSISTANT_IMG", "https://telegra.ph/file/66b907a1ccd4ca09f6177.jpg"
-        )
+          )
         CUSTOM_ALIVE_TEXT = os.environ.get(
             "ALIVE_TEXT", "✮ MY BOT IS RUNNING SUCCESSFULLY ✮"
-        )
+          )
         CUSTOM_ALIVE_EMOJI = os.environ.get(
           "CUSTOM_ALIVE_EMOJI", "➲"
           )
-          NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int( os.environ.get("NO_OF_BUTTONS_DISPLAY_IN_CMD", 10))
-          NO_OF_COLUMS_DISPLAYED_IN_H_ME_CMD = int( os.environ.get("NO_OF_COLUMS_DISPLAY_IN_CMD", 2))
-          EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", "⚝")
+        NO_OF_BUTTONS_DISPLAY_IN_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAY_IN_CMD", 10))
+
+        NO_OF_COLUMS_DISPLAY_IN_CMD = int(os.environ.get("NO_OF_COLUMS_DISPLAY_IN_CMD", 2))
+
+        EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", "⚝")
           BOT_NICK_NAME = os.environ.get("BOT_NICK_NAME")
 
 else:
     if os.path.exists("config.py"):
         from config import Development as Config
+        
+        # REQUIRED
+        TOKEN = TG_BOT_TOKEN
+        BOT_TOKEN = TG_BOT_TOKEN
+        TG_BOT_TOKEN_BF_HER = TG_BOT_TOKEN
+        
+        BOT_USERNAME = TG_BOT_USERNAME
+        TG_BOT_USER_NAME_BF_HER = TG_BOT_USERNAME
+        
+        TG_API_ID = APP_ID
+        TG_API_HASH = API_HASH
+        
+        BOT_N_N = BOT_NICK_NAME
+        botnickname = BOT_NICK_NAME
+        TELEGRAPH_SHORT_NAME = BOT_NICK_NAME
+        
+        USR_TOKEN = USR_TOKEN_UPTOBOX
+
+        OWNER_NAME = ALIVE_NAME8
+        
+        ALIVE_PIC = ALIVE_IMAGE
+        ALIVE_LOGO = ALIVE_IMAGE
+        ALIVE_PHOTO = ALIVE_IMAGE
+        ALIVE_PHOTTO = ALIVE_IMAGE
+        
+        ASSISTANT_LOGO = ASSISTANT_IMG
+        ASSISTANT_START_PIC = ASSISTANT_IMG
+        
+        PM_PERMIT_GROUP_ID = PRIVATE_GROUP_ID
+        CUSTOM_PMPERMIT_TEXT = CUSTOM_PMPERMIT
+        PRIVATE_GROUP_BOT_API_ID = PM_LOGGR_BOT_API_ID
+        
+        TEMP_DIR = TEMP_DOWNLOAD_DIRECTORY
+        TMP_DOWNLOAD_DIRECTORY = TRASH_DOWNLOAD_DIRECTORY
+        
+        LYDIA_API = LYDIA_API_KEY
+        AI_API_KEY = LYDIA_API_KEY
+        
+        ALIVE_TEXT = CUSTOM_ALIVE_TEXT
+
