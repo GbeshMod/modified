@@ -12,7 +12,10 @@ elif ENV:
         APP_ID = int(os.environ.get("APP_ID", 6))
         API_HASH = os.environ.get("API_HASH", None)
         STRING_SESSION = os.environ.get("STRING_SESSION", None)
+        STRING_SESSION_2 = os.environ.get("STRING_SESSION_2", None)
+        STRING_SESSION_3 = os.environ.get("STRING_SESSION_3", None)
         DB_URI = os.environ.get("DATABASE_URL", None)
+        CLEAN_GROUPS = os.environ.get("CLEAN_GROUPS", False)
         TRASH_DOWNLOAD_DIRECTORY = os.environ.get(
             "TRASH_DOWNLOAD_DIRECTORY", "./trash/"
         )
@@ -33,6 +36,7 @@ elif ENV:
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", -100))
         PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID", -100))
         NO_SONGS = bool(os.environ.get("NO_SONGS", False))
+        PING_SERVERS = bool(os.environ.get("PING_SERVERS", False))
         DOWNLOAD_PFP_URL_CLOCK = os.environ.get("DOWNLOAD_PFP_URL_CLOCK", None)
         G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
         G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
@@ -52,7 +56,6 @@ elif ENV:
         WHITE_CHAT = set(int(x) for x in os.environ.get("WHITE_CHAT", "").split())
         ALIVE_TEXT = os.environ.get("ALIVE_TEXT", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
-        STRING_SESSIONS = os.environ.get("STRING_SESSIONS", None)
         VIRUSTOTAL_API_KEY = os.environ.get("VIRUSTOTAL_API_KEY", None)
         GPLINKS_API_KEY = os.environ.get("GPLINKS_API_KEY", None)
         SUPERHERO_API_KEY = os.environ.get("SUPERHERO_API_KEY", None)
@@ -60,10 +63,19 @@ elif ENV:
         WOLFRAM_API = os.environ.get("WOLFRAM_API", None)
         USR_TOKEN_UPTOBOX = os.environ.get("USR_TOKEN_UPTOBOX", None)
         HASH_TO_TORRENT_API = os.environ.get("HASH_TO_TORRENT_API", None)
+        OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
+        DEEP_API_KEY = os.environ.get("DEEP_API_KEY", None)
+        CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
+        YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
+        WALL_API = os.environ.get("WALL_API", None)
+        DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
+        REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
         SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get(
             "SCREEN_SHOT_LAYER_ACCESS_KEY", None
         )
         SUB_TO_MSG_ASSISTANT = os.environ.get("SUB_TO_MSG_ASSISTANT", False)
+        PING_SERVER_EVERY_MINUTE_VALUE = int(os.environ.get("PING_SERVER_EVERY_MINUTE_VALUE", 30))
+        NSFW_FILTER_PM = os.environ.get("NSFW_FILTER_PM", True)
         AUTO_SPELL_FIX = os.environ.get("AUTO_SPELL_FIX", False)
         IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
         IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
@@ -78,11 +90,6 @@ elif ENV:
         TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
 
         TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Modified")
-        OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
-        DEEP_API_KEY = os.environ.get("DEEP_API_KEY", None)
-        CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
-        WALL_API = os.environ.get("WALL_API", None)
-        DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
         NOSPAMPLUS_TOKEN = os.environ.get("NOSPAMPLUS_TOKEN", None)
         G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))
         GOOGLE_SEARCH_COUNT_LIMIT = int(os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
@@ -93,16 +100,15 @@ elif ENV:
         DISABLE_MARKDOWN = os.environ.get("DISABLE_MARKDOWN", False)
         LOAD_OTHER_PLUGINS = os.environ.get("LOAD_OTHER_PLUGINS", False)
         LOAD_OTHER_PLUGINS_CHNNL = os.environ.get("LOAD_OTHER_PLUGINS_CHNNL", "@deadplugins")
-        MAX_MESSAGE_SIZE_LIMIT = 4095
         UB_BLACK_LIST_CHAT = set(
             int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split()
         )
         MAX_ANTI_FLOOD_MESSAGES = 10
+        MAX_MESSAGE_SIZE_LIMIT = 4095
         ANTI_FLOOD_WARN_MODE = ChatBannedRights(
             until_date=None, view_messages=None, send_messages=True
         )
         CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
-        REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
         SLAP_USERNAME = os.environ.get("SLAP_USERNAME", None)
         GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
         GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
@@ -155,7 +161,6 @@ elif ENV:
         G_PHOTOS_AUTH_TOKEN_ID = os.environ.get("G_PHOTOS_AUTH_TOKEN_ID", None)
         if G_PHOTOS_AUTH_TOKEN_ID:
           G_PHOTOS_AUTH_TOKEN_ID = int(G_PHOTOS_AUTH_TOKEN_ID)
-        YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
         MONGO_URI = os.environ.get("MONGO_URI", None)
         LYDIA_API = os.environ.get("LYDIA_API", None)
         PRIVATE_GROUP_ID = int(os.environ.get("PRIVATE_GROUP_ID", False))
@@ -211,7 +216,7 @@ else:
         TELEGRAPH_SHORT_NAME = BOT_NICK_NAME
         
         USR_TOKEN = USR_TOKEN_UPTOBOX
-
+        TIMEZONE = TZ
         OWNER_NAME = ALIVE_NAME8
         
         ALIVE_PIC = ALIVE_IMAGE
