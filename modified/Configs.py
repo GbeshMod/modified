@@ -64,10 +64,10 @@ elif ENV:
         USR_TOKEN_UPTOBOX = os.environ.get("USR_TOKEN_UPTOBOX", None)
         HASH_TO_TORRENT_API = os.environ.get("HASH_TO_TORRENT_API", None)
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
-        DEEP_API_KEY = os.environ.get("DEEP_API_KEY", None)
         CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
         YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
         WALL_API = os.environ.get("WALL_API", None)
+        DEEP_API_KEY = os.environ.get("DEEP_API_KEY", None)
         DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
         REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
         SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get(
