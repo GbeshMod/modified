@@ -1,15 +1,45 @@
 import os
+import re
+import cv2
 import wget
+import math
+import time
+import json
+import eyed3
+import shlex
+import shutil
 import lottie
-import asyncio
+import random
+import string
 import hachoir
+import asyncio
+import aiohttp
+import zipfile
+import telethon
+import argparse
 import requests
+import subprocess
+import webbrowser
+import numpy as np
+from PIL import Image
+from typing import Union
 from pathlib import Path
+from os.path import basename
 from bs4 import BeautifulSoup
+from modified import logging
+from selenium import webdriver
+from pymediainfo import MediaInfo
+from modified import bot as borg
+from bs4 import BeautifulSoup as bs
 from modified.utils import load_module
 from hachoir.parser import createParser
+from typing import List, Optional, Tuple
 from hachoir.metadata import extractMetadata
+from modified.function.FastTelethon import *
+from telethon.tl.types import MessageMediaPhoto
 from telethon.tl.types import DocumentAttributeAudio
+from telethon import Button, custom, events, functions
+from telethon.tl.types import InputMessagesFilterDocument
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (
     ContentTooShortError,
@@ -22,31 +52,25 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-import math, re, shlex, json, time, eyed3, aiohttp, zipfile
-import telethon
-import requests
-import subprocess
-import webbrowser
-from typing import Union
-from os.path import basename
-from modified import logging
-from bs4 import BeautifulSoup
-from bs4 import BeautifulSoup as bs
-from typing import List, Optional, Tuple
-from telethon.tl.types import InputMessagesFilterDocument
-from telethon import Button, custom, events, functions
-from pymediainfo import MediaInfo
-from telethon.tl.types import MessageMediaPhoto
+
+
+sedpath = Config.TEMP_DOWNLOAD_DIRECTORY
+tempath = Config.TRASH_DOWNLOAD_DIRECTORY
+
+#headers = {"UserAgent": UserAgent().random}
 SIZE_UNITS = ["B", "KB", "MB", "GB", "TB", "PB"]
+logger = logging.getLogger("[--WARNING--]")
 BASE_URL = "https://isubtitles.org"
-from modified.Configs import Config
-from modified.function.FastTelethon import upload_file
 import modified.utils
+import modified.Configs.Config
 import modified.function.format
 import modified.function.helpers
+import modified.function.image_compression
+from modified.function.FastTelethon import upload_file
 
 
 BASE_URL = "https://isubtitles.org"
+session = aiohttp.ClientSession()
 sedpath = Config.TEMP_DOWNLOAD_DIRECTORY
 tempath = Config.TRASH_DOWNLOAD_DIRECTORY
 
@@ -54,6 +78,59 @@ logger = logging.getLogger("[--WARNING--]")
 
 
 
+
+async def fetch_json(link):
+    async with session.get(link) as resp:
+        return await resp.json()
+
+def order_points(pts):
+	rect = np.zeros((4, 2), dtype = "float32")
+ 
+	s = pts.sum(axis = 1)
+	rect[0] = pts[np.argmin(s)]
+	rect[2] = pts[np.argmax(s)]
+ 
+ 
+	diff = np.diff(pts, axis = 1)
+	rect[1] = pts[np.argmin(diff)]
+	rect[3] = pts[np.argmax(diff)]
+ 
+	return rect
+
+def four_point_transform(image, pts):
+	rect = order_points(pts)
+	(tl, tr, br, bl) = rect
+ 
+	widthA = np.sqrt(((br[0] - bl[0]) ** 2) + ((br[1] - bl[1]) ** 2))
+	widthB = np.sqrt(((tr[0] - tl[0]) ** 2) + ((tr[1] - tl[1]) ** 2))
+	maxWidth = max(int(widthA), int(widthB))
+ 
+	heightA = np.sqrt(((tr[0] - br[0]) ** 2) + ((tr[1] - br[1]) ** 2))
+	heightB = np.sqrt(((tl[0] - bl[0]) ** 2) + ((tl[1] - bl[1]) ** 2))
+	maxHeight = max(int(heightA), int(heightB))
+ 
+	dst = np.array([
+		[0, 0],
+		[maxWidth - 1, 0],
+		[maxWidth - 1, maxHeight - 1],
+		[0, maxHeight - 1]], dtype = "float32")
+ 
+	M = cv2.getPerspectiveTransform(rect, dst)
+	warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
+	
+	return warped
+    
+def get_readable_file_size(size_in_bytes: Union[int, float]) -> str:
+    if size_in_bytes is None:
+        return "0B"
+    index = 0
+    while size_in_bytes >= 1024:
+        size_in_bytes /= 1024
+        index += 1
+    try:
+        return f"{round(size_in_bytes, 2)}{SIZE_UNITS[index]}"
+    except IndexError:
+        return "File too large"
 
 async def reply_id(event):
     reply_to_id = None
@@ -242,7 +319,6 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
         process.returncode,
         process.pid,
     )
-
 
 
 def run_sync(func, *args, **kwargs):
@@ -698,6 +774,67 @@ def tgs_to_gif(sticker_path: str, quality: int = 256) -> str:
     os.remove(sticker_path)
     return dest
 
+async def fetch_feds(event, borg):
+    fedList = []
+    await event.edit("`Fetching Your FeD List`, This May Take A While.")
+    reply_s = await event.get_reply_message()
+    if reply_s and reply_s.media:
+        downloaded_file_name = await borg.download_media(reply_s.media, "fedlist.txt")
+        await asyncio.sleep(1)
+        file = open(downloaded_file_name, "r")
+        lines = file.readlines()
+        for line in lines:
+            try:
+                fedList.append(line[:36])
+            except:
+                pass
+                # CleanUp
+        os.remove(downloaded_file_name)
+        return fedList
+    async with borg.conversation("@MissRose_bot") as bot_conv:
+        await bot_conv.send_message("/start")
+        await bot_conv.send_message("/myfeds")
+        response = await bot_conv.get_response(timeout=300)
+        if "You can only use fed commands once every 5 minutes" in response.text:
+            await event.edit("`Try again after 5 mins.`")
+            return
+        elif "make a file" in response.text:
+            await event.edit(
+                "`Boss, You Real Peru. You Are Admin in So Many Feds. WoW!`"
+            )
+            await response.click(0)
+            fedfile = await bot_conv.get_response()
+            await asyncio.sleep(2)
+            if "You can only use fed commands once every 5 minutes" in fedfile.text:
+                await event.edit("`Try again after 5 mins.`")
+                return
+            if fedfile.media:
+                downloaded_file_name = await borg.download_media(fedfile.media, "fedlist.txt")
+                await asyncio.sleep(1)
+                file = open(downloaded_file_name, "r")
+                lines = file.readlines()
+                for line in lines:
+                    try:
+                        fedList.append(line[:36])
+                    except BaseException:
+                        pass
+                os.remove(downloaded_file_name)
+        else:
+            In = False
+            tempFedId = ""
+            for x in response.text:
+                if x == "`":
+                    if In:
+                        In = False
+                        fedList.append(tempFedId)
+                        tempFedId = ""
+                    else:
+                        In = True
+
+                elif In:
+                    tempFedId += x
+    await event.edit("`FeD List Fetched SucessFully.`")
+    return fedList
 
 async def fetch_audio(event, ws):
     if not event.reply_to_msg_id:
@@ -750,4 +887,83 @@ def find_urls(inp,url,driver, directory):
             pass
 
 
+async def is_nsfw(event):
+    lmao = event
+    if not (
+            lmao.gif
+            or lmao.video
+            or lmao.video_note
+            or lmao.photo
+            or lmao.sticker
+            or lmao.media
+    ):
+        return False
+    if lmao.video or lmao.video_note or lmao.sticker or lmao.gif:
+        try:
+            starkstark = await event.client.download_media(lmao.media, thumb=-1)
+        except:
+            return False
+    elif lmao.photo or lmao.sticker:
+        try:
+            starkstark = await event.client.download_media(lmao.media)
+        except:
+            return False
+    img = starkstark
+    f = {"file": (img, open(img, "rb"))}
+    
+    r = requests.post("https://starkapi.herokuapp.com/nsfw/", files = f).json()
+    if r.get("success") is False:
+      is_nsfw = False
+    elif r.get("is_nsfw") is True:
+      is_nsfw = True
+    elif r.get("is_nsfw") is False:
+      is_nsfw = False
+    return is_nsfw
+    
 
+mobile_tracker_key = [
+    "Mobile Phone",
+    "Telecoms Circle / State",
+    "Network",
+    "Service Type / Signal",
+    "Connection Status",
+    "SIM card distributed at",
+    "Owner / Name of the caller",
+    "Address / Current GPS Location",
+    "Number of Search History",
+    "Latest Search Places",
+    "Websites / social media contains this number",
+    "Other Telecoms operators in phone area",
+    "No.of district / region in the state",
+    "Circle Capital",
+    "Main Language in the telecoms circle",
+    "Other Languages in the telecom circle",
+    "Local time at phone location",
+    "How Lucky this Number",
+]
+
+
+class Track_Mobile_Number:
+    def __init__(self, indian_mobile_number):
+        self.url = "https://www.findandtrace.com/trace-mobile-number-location"
+        self.mobile_number = indian_mobile_number
+        if self.verify_number:
+            self.data = {
+                "mobilenumber": self.mobile_number,
+                "submit": self.mobile_number,
+            }
+        else:
+            raise Exception("Invalid Mobile Number")
+    @property
+    def verify_number(self):
+        return bool(len(self.mobile_number) == 10 and self.mobile_number.isdigit())
+
+    @property
+    def track(self) -> dict:
+        html = requests.post(self.url, data=self.data, headers=headers)
+        soup = BeautifulSoup(html.text, "html.parser")
+        if soup.find("title").text.strip() != "404 NOT FOUND":
+            mobile_tracker_valve = [i.text.strip() for i in soup.find_all("td")]
+            mobile_tracker = dict(zip(mobile_tracker_key, mobile_tracker_valve))
+            return mobile_tracker
+        raise Exception("Mobile Number Not Found")
