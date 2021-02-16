@@ -20,10 +20,12 @@ from telegraph import Telegraph, exceptions, upload_file
 
 StartTime = time.time()
 Lastupdate = time.time()
-BOT_REPO = Config.UPSTREAM_REPO
 BOT_N_N = Config.BOT_NICK_NAME
+BOT_REPO = Config.UPSTREAM_REPO
+mamaput = Config.TELEGRAPH_SHORT_NAME
 sedprint = logging.getLogger("WARNING")
-mod_version = "0.03.9" 
+mod_version = "0.03.9"
+BOTNAME = "{} v{}".format(mamaput, mod_version)
 BOT_LIN = "[{}]({})".format(BOT_N_N, BOT_REPO)
 
 
