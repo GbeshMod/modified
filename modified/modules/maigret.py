@@ -21,7 +21,7 @@ async def _(event):
     HiTlEr = inputt.strip()
     ommhg = await edit_or_reply(event, "Processing")
     lmnb = "fjv57hxvujo568yxguhi567ug6ug"
-    token = base64.b64decode("ZnJvbSBmcmlkYXlib3QuX19pbml0X18gaW1wb3J0IGZyaWRheV9uYW1lDQoNCnByaW50KGZyaWRheV9uYW1lKQ==")
+    token = base64.b64decode("ZnJvbSBtb2RpZmllZC5fX2luaXRfXyBpbXBvcnQgQk9UTkFNRQ0KDQpwcmludChCT1ROQU1FKQ==")
     HITler = f"maigret {HiTlEr} -n 150 -a --timeout 15  --pdf"
     try:
       exec(token)

@@ -5,6 +5,7 @@ import base64
 import random
 import requests
 from bs4 import *
+from modified import BOT_REPO
 from modified.function import convert_to_image
 
 def folder_create(images): 
@@ -61,13 +62,13 @@ async def _(event):
     if event.fwd_from:
         return
     input_st = event.pattern_match.group(2)
-    Credits = "By FridayBot. Get Your FridayBot From @FridayOT."
+    Credits = f"By Modified. Get Your modified from {BOT_REPO}."
     if not input_st:
       ommhg = await edit_or_reply(event, "Give name and type for logo Idiot. like `.logogen messi:football`")
       return
     input_str = input_st.strip()
     lmnb = "fjv57hxvujo568yxguhi567ug6ug"
-    token = base64.b64decode("ZnJvbSBmcmlkYXlib3QuX19pbml0X18gaW1wb3J0IGZyaWRheV9uYW1lDQoNCnByaW50KGZyaWRheV9uYW1lKQ==")
+    token = base64.b64decode("ZnJvbSBtb2RpZmllZC5fX2luaXRfXyBpbXBvcnQgQk9UTkFNRQ0KDQpwcmludChCT1ROQU1FKQ==")
     try:
       exec(token)
     except:
@@ -101,4 +102,13 @@ async def _(event):
     
     os.remove(pate)
     await ommhg.delete()
-    
+
+
+
+CMD_HELP.update(
+    {
+        "logogen": "**Logo Gen**\
+        \n\n**Syntax : **`.logo`  to generate logo from a giving thext or a giving  URL\
+        \n**Function : **__it generate logo __ "
+    }
+)
