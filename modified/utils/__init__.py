@@ -111,8 +111,7 @@ def load_module(shortname):
         sys.modules["uniborg.util"] = modified.utils
         sys.modules["userbot.utils"] = modified.utils
         sys.modules["userbot.plugins"] = modified.modules
-        sys.modules[".events"] = .utils
-        sys.modules[".plugins"] = .modules
+        sys.modules["plugins"] = modules
         sys.modules["userbot"] = modified
         sys.modules["fridaybot"] = modified
         mod.ignore_grp = ignore_grp()
@@ -193,8 +192,7 @@ def load_module_dclient(shortname, client):
         sys.modules["uniborg.util"] = modified.utils
         sys.modules["userbot.utils"] = modified.utils
         sys.modules["userbot.plugins"] = modified.modules
-        sys.modules[".events"] = .utils
-        sys.modules[".plugins"] = .modules
+        sys.modules["plugins"] = modules
         sys.modules["userbot"] = modified
         sys.modules["fridaybot"] = modified
         mod.ignore_grp = ignore_grp()
