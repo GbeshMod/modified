@@ -1,15 +1,16 @@
-import asyncio
-import base64
 import os
+import time
 import random
 import shutil
-import time
+import base64
+import asyncio
 from datetime import datetime
-
-from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
-from telethon.errors import FloodWaitError
+from modified.utils import FONT
 from telethon.tl import functions
+from telethon.errors import FloodWaitError
+from PIL import Image, ImageDraw, ImageFont
+
 
 from . import AUTONAME, DEFAULT_BIO
 
@@ -18,7 +19,7 @@ CHANGE_TIME = 60
 DEL_TIME_OUT = 60
 DEFAULTUSER = str(AUTONAME) if AUTONAME else "Modified"
 
-FONT_FILE_TO_USE = "./modified/tools/fonts/DroidSansMono.ttf"
+FONT_FILE_TO_USE = FONT
 global AUTOPICSTART
 global DIGITALPICSTART
 global BLOOMSTART
@@ -37,12 +38,12 @@ async def autopic(event):
     if event.fwd_from:
         return
     global AUTOPICSTART
-    downloaded_file_name = "userbot/original_pic.png"
+    downloaded_file_name = "trash/original_pic.png"
     downloader = SmartDL(
         Config.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False
     )
     downloader.start(blocking=False)
-    photo = "userbot/photo_pfp.png"
+    photo = "trash/photo_pfp.png"
     while not downloader.isFinished():
         pass
     input_str = event.pattern_match.group(1)
@@ -84,14 +85,14 @@ async def main(event):
     if event.fwd_from:
         return
     global DIGITALPICSTART
-    poto = "userbot/poto_pfp.png"
-    cat = str(
+    poto = "trash/poto_pfp.png"
+    benny = str(
         base64.b64decode(
-            "aHR0cHM6Ly90ZWxlZ3JhLnBoL2ZpbGUvYWVhZWJlMzNiMWYzOTg4YTBiNjkwLmpwZw=="
+            "aHR0cHM6Ly90ZWxlZ3JhLnBoL2ZpbGUvNTkxMmExMmNhYTY2M2RlMWY3N2RhLmpwZw=="
         )
     )[2:51]
-    downloaded_file_name = "userbot/digital_pic.png"
-    downloader = SmartDL(cat, downloaded_file_name, progress_bar=False)
+    downloaded_file_name = "trash/digital_pic.png"
+    downloader = SmartDL(benny, downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
     if DIGITALPICSTART:
         return await edit_delete(event, f"`Digitalpfp is already enabled`")
@@ -104,10 +105,10 @@ async def main(event):
         current_time = datetime.now().strftime("%H:%M")
         img = Image.open(poto)
         drawn_text = ImageDraw.Draw(img)
-        cat = str(base64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg=="))[
+        benny = str(base64.b64decode("Rm9udHMvZGlnaXRhbC50dGY="))[
             2:36
         ]
-        fnt = ImageFont.truetype(cat, 200)
+        fnt = ImageFont.truetype(benny, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))
         img.save(poto)
         file = await event.client.upload_file(poto)
@@ -126,12 +127,12 @@ async def autopic(event):
     if event.fwd_from:
         return
     global BLOOMSTART
-    downloaded_file_name = "userbot/original_pic.png"
+    downloaded_file_name = "trash/original_pic.png"
     downloader = SmartDL(
         Config.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=True
     )
     downloader.start(blocking=False)
-    photo = "userbot/photo_pfp.png"
+    photo = "trash/photo_pfp.png"
     while not downloader.isFinished():
         pass
     if BLOOMSTART:

@@ -1,5 +1,3 @@
-# Catuserbot Google Drive managers  ported from Projectbish and added extra things by @mrconfused
-
 import asyncio
 import base64
 import io
@@ -172,7 +170,7 @@ async def create_app(gdrive):
     """ - Create google drive service app - """
     hmm = bot.uid
     creds = helper.get_credentials(str(hmm))
-    cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    cat = base64.b64decode("TUpLX0JsVjY3djh4YmdITTVBUWpIUQ==")
     if creds is not None:
         """ - Repack credential objects from strings - """
         creds = pickle.loads(base64.b64decode(creds.encode()))

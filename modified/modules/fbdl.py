@@ -3,8 +3,9 @@ import os
 import html
 import requests
 from datetime import datetime
+from modified.utils.gbesh import modified_pix
 
-thumbs = "./resources/IMG_20200929_103719_628.jpg"
+thumbs = modified_pix
 
 
 def main(url, filename):

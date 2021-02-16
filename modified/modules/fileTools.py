@@ -14,7 +14,7 @@ from modified.function import convert_to_image, crop_vid, runcmd
 temp_dir = Config.TEMP_DOWNLOAD_DIRECTORY
 
 
-@modbot.on(modified_cmd(pattern=r"img2pdf(?: |$)(.*)"))
+@modbot.on(modified_cmd(pattern=r"img2pdf (?: |$)(.*)"))
 async def heck(event):
     if event.fwd_from:
         return  

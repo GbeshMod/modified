@@ -1,5 +1,3 @@
-# by @mrconfused (@sandy1709)
-
 import asyncio
 import base64
 import os
@@ -178,7 +176,7 @@ async def _(event):
             else:
                 return await edit_delete(event, "Use quality of range 0 to 721")
     modreply = await event.get_reply_message()
-    mod = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    mod = base64.b64decode("TUpLX0JsVjY3djh4YmdITTVBUWpIUQ==")
     if not modreply or not modreply.media or not modreply.media.document:
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
     if modreply.media.document.mime_type != "applimodion/x-tgsticker":
