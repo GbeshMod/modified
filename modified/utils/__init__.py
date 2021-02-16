@@ -28,7 +28,7 @@ from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 
 import modified.modules
 import modified.function
-import .gbesh 
+from .gbesh import *
 from .chrome import *
 from .wraptools import *
 from .bytesformat import *
