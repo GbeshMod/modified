@@ -18,7 +18,7 @@ Modified  Bot Made with Love, 📱Phone, 😓Hardwork, 💻Windows & 🐍Python 
 
 # Installing..
 ### Get STRING SESSION 
-<p align="left"><a href="https://repl.it/@gbeshmod/modified#main.py"><img src="https://www.linkpicture.com/q/Repl.png" width="150"></a></p> 
+<p align="left"><a href="https://repl.it/@gbeshmod/modified#main.py"><img src="https://repl.it/badge/github/GbeshMod/modified" width="150"></a></p> 
 
 ### Deploy To Heroku 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/GbeshMod/modified)
