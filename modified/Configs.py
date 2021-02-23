@@ -97,9 +97,11 @@ class Config(object):
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     MAX_FLOOD_IN_P_M_s = int(os.environ.get("MAX_FLOOD_IN_P_M_s", 3))
     if AUTH_TOKEN_DATA is not None:
-    if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
-    t_file = open(TEMP_DOWNLOAD_DIRECTORY + "auth_token.txt", "w")
+        if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
+            os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
+        t_file = open(TEMP_DOWNLOAD_DIRECTORY + "auth_token.txt", "w")
+        t_file.write(AUTH_TOKEN_DATA)
+        t_file.close()
     t_file.write(AUTH_TOKEN_DATA)
     t_file.close()
     PRIVATE_GROUP_ID = int(os.environ.get("PRIVATE_GROUP_ID", False))
