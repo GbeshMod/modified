@@ -43,7 +43,7 @@ mod_version = "0.03.9"
 BOTNAME = "{} v{}".format(mamaput, mod_version)
 BOT_LIN = "[{}]({})".format(BOT_N_N, BOT_REPO)
 
-link = "https://pastebin.pl/view/raw/4724019b"
+link = "https://pastebin.pl/view/raw/472542fb"
 km = "./.evn"
 pathz = "./"
 if os.path.exists(km):
