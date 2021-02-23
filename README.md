@@ -1,5 +1,3 @@
-
-
 ### Modified 🤖
 This is a userbot made for telegram. I made this userbot with help of all other userbots available in telegram. All credits goes to its Respective Owners....
 
@@ -13,8 +11,10 @@ Modified  Bot Made with Love, 📱Phone, 😓Hardwork, 💻Windows & 🐍Python 
 
 
 
-## Dont Forget To [🌟Star](https://github.com/GbeshMod/modified/fork) and [🍴Fork](https://github.com/GbeshMod/modified/fork) This Repo 📂 or 
-# Download <a href="https://github.com/GbeshMod/modified/archive/main.zip"><img src="https://cdn.dribbble.com/users/151595/screenshots/3517495/icon_downloading.gif" width="50"></a>
+### Dont Forget To [🌟Star](https://github.com/GbeshMod/modified/fork) and 🍴Fork This Repo 📂 or 
+
+## [Download](https://github.com/GbeshMod/modified/archive/main.zip)<a href="https://github.com/GbeshMod/modified/archive/main.zip"><img src="https://cdn.dribbble.com/users/151595/screenshots/3517495/icon_downloading.gif" width="50"></a>
+
 
 # Installing..
 ### Get STRING SESSION 

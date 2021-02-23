@@ -3,5 +3,5 @@ aiohttp
 asyncurban
 apscheduler
 anime_downloader
+-r modified/tools/r.txt
 bs4
--r modified/tools/required.txt
