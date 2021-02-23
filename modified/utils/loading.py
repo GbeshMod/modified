@@ -6,21 +6,6 @@ from .bytesformat import *
 from .exceptions import CancelProcess
 from ..function import edit_or_reply
 
-pro_load = [
-  progressfz,
-  progressp, 
-  progressx, 
-  progress_old, 
-  progressf, 
-  progressv, 
-  progressl, 
-  progressj,
-  ]
-
-
-
-progress = random.choice(pro_load)
-
 
 async def progressfz(current, total, event, start, prog_type, file_name=None, is_cancelled=False):
     now = time.time()
@@ -226,3 +211,16 @@ async def progressj(current, total, event, start, prog_type, file_name=None, is_
         await event.edit(f"`{prog_type}`\n\n"
                           f"`Status`\n{tmp}")
 
+
+
+pro_load = [
+  progressfz,
+  progressp, 
+  progressx, 
+  progress_old, 
+  progressf, 
+  progressv, 
+  progressl, 
+  progressj,
+  ]
+progress = random.choice(pro_load)
