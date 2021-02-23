@@ -161,7 +161,7 @@ class Config(object):
     NC_LOG_P_M_S = bool(os.environ.get("NC_LOG_P_M_S", False))
     PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
     if PM_LOGGR_BOT_API_ID:
-    PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
+    PM_LOGGR_BOT_API_ID = int(PRIVATE_GROUP_ID)
     DB_URI = os.environ.get("DATABASE_URL", None)
     COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\.")
     SUDO_COMMAND_HAND_LER = os.environ.get("SUDO_COMMAND_HAND_LER", "\.")
