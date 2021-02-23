@@ -14,7 +14,7 @@ ok = """
 
 """
 print(ok)
-print("An online StringSession generator Made With ReplRun")
+print("An online StringSession generator Made With Python ")
 print("Telethon UserBot ")
 APP_ID = int(input("Enter APP ID here: \n"))
 API_HASH = input("Enter API HASH here: \n")
