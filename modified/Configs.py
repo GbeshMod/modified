@@ -131,7 +131,7 @@ class Config(object):
     PING_SERVER_EVERY_MINUTE_VALUE = int(os.environ.get("PING_SERVER_EVERY_MINUTE_VALUE", 30))
     DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
     NOSPAMPLUS_TOKEN = os.environ.get("NOSPAMPLUS_TOKEN", None)
-    G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))!
+    G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))
     GOOGLE_SEARCH_COUNT_LIMIT = int(os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
     TG_GLOBAL_ALBUM_LIMIT = int(os.environ.get("TG_GLOBAL_ALBUM_LIMIT", 9))
     PRIVATE_GROUP_BOT_API_ID = int(
