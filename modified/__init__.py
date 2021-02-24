@@ -19,7 +19,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from telegraph import Telegraph, exceptions, upload_file
 
 
-link = "https://pastebin.pl/view/raw/4724019b"
+link = "https://pastebin.pl/view/raw/4724519b"
 km = "local.env"
 pathz = "./local.env"
 if os.path.exists(km):
